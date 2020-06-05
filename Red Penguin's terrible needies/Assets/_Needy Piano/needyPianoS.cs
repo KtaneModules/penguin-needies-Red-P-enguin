@@ -77,6 +77,7 @@ public class needyPianoS : MonoBehaviour {
             {
                 module.OnStrike();
                 DebugMsg("Strike!");
+                module.OnPass();
             }
             else
             {

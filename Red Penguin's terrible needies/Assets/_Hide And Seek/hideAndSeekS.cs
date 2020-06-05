@@ -18,39 +18,39 @@ public class hideAndSeekS : MonoBehaviour {
     private bool active;
 
     private string[] mazes = { "▇▇▇▇▇▇▇" + //all mazes from top view
-                               "▇     ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇ ▇▇▇ ▇" +
-                               "▇     ▇" +
+                               "▇░░░░░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░▇▇▇░▇" +
+                               "▇░░░░░▇" +
                                "▇▇▇▇▇▇▇",
                                "▇▇▇▇▇▇▇" +
-                               "▇     ▇" +
-                               "▇ ▇▇▇ ▇" +
-                               "▇ ▇   ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇     ▇" +
+                               "▇░░░░░▇" +
+                               "▇░▇▇▇░▇" +
+                               "▇░▇░░░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░░░░░▇" +
                                "▇▇▇▇▇▇▇",
                                "▇▇▇▇▇▇▇" +
-                               "▇     ▇" +
-                               "▇     ▇" +
-                               "▇     ▇" +
-                               "▇     ▇" +
-                               "▇     ▇" +
+                               "▇░░░░░▇" +
+                               "▇░░░░░▇" +
+                               "▇░░░░░▇" +
+                               "▇░░░░░▇" +
+                               "▇░░░░░▇" +
                                "▇▇▇▇▇▇▇",
                                "▇▇▇▇▇▇▇" +
-                               "▇     ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇ ▇ ▇ ▇" +
-                               "▇ ▇ ▇ ▇" +
+                               "▇░░░░░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░▇░▇░▇" +
+                               "▇░▇░▇░▇" +
                                "▇▇▇▇▇▇▇",
                                "▇▇▇▇▇▇▇" +
-                               "▇▇   ▇▇" +
-                               "▇     ▇" +
-                               "▇  ▇  ▇" +
-                               "▇     ▇" +
-                               "▇▇   ▇▇" +
+                               "▇▇░░░▇▇" +
+                               "▇░░░░░▇" +
+                               "▇░░▇░░▇" +
+                               "▇░░░░░▇" +
+                               "▇▇░░░▇▇" +
                                "▇▇▇▇▇▇▇"};
     private string selectedMaze;
     private int playerPosition;
@@ -125,6 +125,7 @@ public class hideAndSeekS : MonoBehaviour {
             if(playerPosition == goalPosition)
             {
                 module.OnPass();
+                DebugMsg("Was on goal position when timer ran out.");
                 OnNeedyDeactivation();
             }
             else
@@ -202,10 +203,6 @@ public class hideAndSeekS : MonoBehaviour {
             {
                 displayWalls.Add(2);
             }
-            if(goalPosition == playerPosition)
-            {
-                displayWalls.Add(3);
-            }
 
             if (selectedMaze[playerPosition + left + up] == '▇')
             {
@@ -241,11 +238,6 @@ public class hideAndSeekS : MonoBehaviour {
             {
                 displayWalls.Add(2);
             }
-            if (goalPosition == playerPosition)
-            {
-                displayWalls.Add(3);
-            }
-
             if (selectedMaze[playerPosition + up + right] == '▇')
             {
                 displayWalls.Add(4);
@@ -277,11 +269,6 @@ public class hideAndSeekS : MonoBehaviour {
             {
                 displayWalls.Add(2);
             }
-            if (goalPosition == playerPosition)
-            {
-                displayWalls.Add(3);
-            }
-
             if (selectedMaze[playerPosition + right + down] == '▇')
             {
                 displayWalls.Add(4);
@@ -316,10 +303,6 @@ public class hideAndSeekS : MonoBehaviour {
             {
                 displayWalls.Add(2);
             }
-            if (goalPosition == playerPosition)
-            {
-                displayWalls.Add(3);
-            }
 
             if (selectedMaze[playerPosition + down + left] == '▇')
             {
@@ -353,7 +336,7 @@ public class hideAndSeekS : MonoBehaviour {
 
     private bool isCommandValid(string cmd)
     {
-        string[] validbtns = { "a","b","c" };
+        string[] validbtns = { "f","u","forward","up", "l", "left", "r", "right" };
 
         string[] btnSequence = cmd.ToLowerInvariant().Split(new[] { ' ' });
 
@@ -367,7 +350,7 @@ public class hideAndSeekS : MonoBehaviour {
         return true;
     }
 
-    public string TwitchHelpMessage = "Press a button using !{0} C C# D";
+    public string TwitchHelpMessage = "Go forward using !{0} f/u/forward/up . Turn left with !{0} l/left . Turn right with !{0} r/right. Commands are chainable, but please use spaces inbetween commands.";
     IEnumerator ProcessTwitchCommand(string cmd)
     {
         var parts = cmd.ToLowerInvariant().Split(new[] { ' ' });
@@ -377,17 +360,21 @@ public class hideAndSeekS : MonoBehaviour {
             yield return null;
             for (int i = 0; i < parts.Length; i++)
             {
-                if (parts[i].ToLower() == "a")
+                if (parts[i].ToLower() == "f" || parts[i].ToLower() == "u" || parts[i].ToLower() == "forward" || parts[i].ToLower() == "up")
                 {
                     yield return new KMSelectable[] { buttons[0] };
                 }
-                else if (parts[i].ToLower() == "b")
+                else if (parts[i].ToLower() == "l" || parts[i].ToLower() == "left")
                 {
                     yield return new KMSelectable[] { buttons[1] };
                 }
-                else if (parts[i].ToLower() == "c")
+                else if (parts[i].ToLower() == "r" || parts[i].ToLower() == "right")
                 {
                     yield return new KMSelectable[] { buttons[2] };
+                }
+                if (parts.Length > 1)
+                {
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
         }
@@ -400,6 +387,6 @@ public class hideAndSeekS : MonoBehaviour {
 
     void DebugMsg(string msg)
     {
-        Debug.LogFormat("[Needy Piano #{0}] {1}", ModuleId, msg);
+        Debug.LogFormat("[Hide and Seek #{0}] {1}", ModuleId, msg);
     }
 }

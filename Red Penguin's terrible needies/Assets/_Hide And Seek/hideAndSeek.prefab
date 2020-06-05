@@ -1436,7 +1436,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ed6eb0b166be98a4a952cf79fcd25b74, type: 3}
   - {fileID: 21300000, guid: 1a70024e9bfe3e64eb55d2de3c07f34a, type: 3}
   - {fileID: 21300000, guid: 1e0bd5cb7b82fd24a89d4ec5a88ee2f9, type: 3}
-  TwitchHelpMessage: Press a button using !{0} C C# D
+  TwitchHelpMessage: Go forward using !{0} f/u/forward/up . Turn left with !{0} l/left
+    . Turn right with !{0} r/right. Commands are chainable, but please use spaces
+    inbetween commands.
 --- !u!114 &114804044839317372
 MonoBehaviour:
   m_ObjectHideFlags: 1
