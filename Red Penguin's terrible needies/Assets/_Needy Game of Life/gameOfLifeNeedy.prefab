@@ -3000,7 +3000,9 @@ MonoBehaviour:
   lightMats:
   - {fileID: 2100000, guid: a7e535026ab759246ba47cd9b9acce34, type: 2}
   - {fileID: 2100000, guid: 345d306c9844f2f4bbb037a1928d76ef, type: 2}
-  TwitchHelpMessage: Press a button using !{0} C C# D
+  TwitchHelpMessage: 'Press a button using !{0} A1/B2/C3/D4, etc, press the reset
+    button with !{0} reset, press the submit button with !{0} submit. Commands can
+    be chained (example: !{0} a1 reset b2 b3 submit)'
 --- !u!114 &114553993376686670
 MonoBehaviour:
   m_ObjectHideFlags: 1
