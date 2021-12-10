@@ -30,7 +30,6 @@ public class needyPianoS : MonoBehaviour {
         {
             button.OnInteract += delegate () { buttonPressed(button); return false; };
         }
-        DebugMsg("The notes in order are " + noteRenderers[0].name + " " + noteRenderers[1].name + " " + noteRenderers[2].name + ".");
     }
 
     protected void OnNeedyActivation()
@@ -40,6 +39,7 @@ public class needyPianoS : MonoBehaviour {
         {
             note.sprite = noteSprites[UnityEngine.Random.Range(0,noteSprites.Length)]; //selects a random note for each display
         }
+        DebugMsg("The notes in order are " + noteRenderers[0].sprite.name + " " + noteRenderers[1].sprite.name + " " + noteRenderers[2].sprite.name + ".");
     }
 
     protected void OnNeedyDeactivation()
