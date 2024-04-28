@@ -1,0 +1,10 @@
+{
+  "name": "penguinNeedies-Editor",
+  "references": [
+    "penguinNeedies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": []
+}

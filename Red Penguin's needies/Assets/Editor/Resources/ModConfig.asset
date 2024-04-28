@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: penguinNeedies
+  title: Red Penguin's Needies
+  author: Red Penguin
+  description: "==\r\nA collection of needies, made by yours truly. Hope you enjoy!\n\r\nPack
+    name: Red Penguin's Needies\r\nPack ID: penguinNeedies\r\n\r\nModules included
+    (Module Name (Module ID))\r:\n\nNeedy Piano (needyPiano)\r\nHide and Seek (hideAndSeek)\r\nNeedy
+    Game of Life (gameOfLifeNeedy)\r\nPermutations (permutations)\nSwippy Swappy (swippySwappy)\n\nMod
+    Settings:\n\nNeedy Game of Life:\n  -\"ShortenTimerAfterFirstIteration\" - If
+    ticked, reduces the timer to give you less time after the first iteration of a
+    board. On by default.\nSwippy Swappy:\n  -\"NumberOfBlocks\" - The amount of blocks
+    on the module. 5 by default.\n  -\"AnimateTimer\" - If ticked, the module will
+    animate the timer. If unticked, the timer will constantly be \"00\". Useful for
+    reducing lag on bombs with many animations. On by default.\n\r\nAll modules are
+    made by Red Penguin.\r\n=="
+  version: 2
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: d912e436c0820a04298bfc55dd6e4fe7, type: 3}
